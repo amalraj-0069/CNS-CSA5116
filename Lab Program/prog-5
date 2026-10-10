@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <string.h>
+int gcd(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+int main() {
+    char text[100];
+    int a, b, i, p;
+    printf("Enter plaintext: ");
+    fgets(text, sizeof(text), stdin);
+    printf("Enter values of a and b: ");
+    scanf("%d %d", &a, &b);
+    if (gcd(a, 26) != 1) {
+        printf("Invalid value of a");
+        return 0;
+    }
+    printf("Encrypted text: ");
+    for (i = 0; text[i] != '\0'; i++) {
+        if (text[i] >= 'A' && text[i] <= 'Z') {
+            p = text[i] - 'A';
+            printf("%c", (a * p + b) % 26 + 'A');
+        }
+        else if (text[i] >= 'a' && text[i] <= 'z') {
+            p = text[i] - 'a';
+            printf("%c", (a * p + b) % 26 + 'a');
+        }
+        else
+            printf("%c", text[i]);
+    }
+    return 0;
+}
+
+INPUT
+Enter plaintext: HELLO
+Enter values of a and b: 5 8
+
+OUTPUT
+Encrypted text: RCLLA
