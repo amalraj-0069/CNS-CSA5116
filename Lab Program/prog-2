@@ -15,3 +15,9 @@ int main() {
     printf("Encrypted message: %s", text);
     return 0;
 }
+
+INPUT
+Enter the message: HELLO WORLD
+
+OUTPUT
+Encrypted message: ITSSG VGKSR
