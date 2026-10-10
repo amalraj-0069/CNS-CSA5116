@@ -20,3 +20,10 @@ int main() {
     printf("Encrypted message: %s", text);
     return 0;
 }
+
+INPUT
+Enter the message: HELLO WORLD
+Enter key (1-25): 3
+
+OUTPUT
+Encrypted message: KHOOR ZRUOG
