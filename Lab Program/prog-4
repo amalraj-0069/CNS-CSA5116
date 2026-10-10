@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+int main() {
+    char text[100], key[100];
+    int i, j = 0, k, n;
+    printf("Enter plaintext: ");
+    fgets(text, sizeof(text), stdin);
+    printf("Enter key: ");
+    scanf("%99s", key);
+    n = strlen(key);
+    for (i = 0; i < n; i++) {
+        if (!isalpha((unsigned char)key[i])) {
+            printf("Invalid key");
+            return 0;
+        }
+    }
+    for (i = 0; text[i] != '\0'; i++) {
+        if (text[i] >= 'A' && text[i] <= 'Z') {
+            k = toupper(key[j % n]) - 'A';
+            text[i] = (text[i] - 'A' + k) % 26 + 'A';
+            j++;
+        }
+        else if (text[i] >= 'a' && text[i] <= 'z') {
+            k = toupper(key[j % n]) - 'A';
+            text[i] = (text[i] - 'a' + k) % 26 + 'a';
+            j++;
+        }
+    }
+    printf("Encrypted text: %s", text);
+    return 0;
+}
+
+INPUT
+Enter plaintext: HELLO
+Enter key: KEY
+
+OUTPUT
+Encrypted text: RIJVS
